@@ -1,0 +1,40 @@
+import Foundation
+
+// 1. 주어진 두 원소중 큰 값이 가장 긴 변 일때
+func check(_ max: Int, _ min: Int) -> Int {
+    var count: Int = 0
+    
+    for i in 1...max {
+        if i + min > max {
+            count += 1
+            print(i)
+        }
+    }
+    return count
+}
+
+// 2. 나머지 한 변이 제일 긴 변일때
+// maxNum보다 커야하고
+// maxNum + ninNum 보다 작거나 같아야해
+func check2(_ max: Int, _ min: Int) -> Int {
+    var count: Int = 0
+
+    var maxNum: Int = max + min
+    
+    for i in 1...maxNum - 1 {
+        if i > max {
+            count += 1
+        }
+    }
+    return count
+}
+
+func solution(_ slides: [Int]) -> Int {
+   
+    let maxNum: Int = slides.max()!
+    let minNum: Int = slides.min()!
+    
+    print(check(maxNum, minNum))
+    print(check2(maxNum, minNum))
+    return check(maxNum, minNum) + check2(maxNum, minNum)
+}
